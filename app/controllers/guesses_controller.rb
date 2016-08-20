@@ -2,9 +2,14 @@ class GuessesController < ApplicationController
   before_action :set_game
 
   def create
-    @game.guesses.create!(guess_params)
+    guess = @game.guesses.create!(guess_params)
 
-    redirect_to game_path(@game), flash: { notice: 'Good guess!'}
+    if guess.number == @game.number
+      @game.update(completed: true)
+      redirect_to game_path(@game), flash: { notice: 'Correct! You win!'}
+    else
+      redirect_to game_path(@game), flash: { notice: 'Nope, try again.'}
+    end
   end
 
   private
