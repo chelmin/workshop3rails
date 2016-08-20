@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+#makes list of games the default page
+  root to: 'games#index'
+
+  resources :games
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
