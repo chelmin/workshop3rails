@@ -10,5 +10,14 @@
   <%= @game.completed %>
 </p>
 
+<%= form_for @game.guesses.build,
+             url: game_guesses_path(@game) do |f| %>
+<p>
+  <strong>Guess:</strong>
+  <%= f.number_field :number =%>
+  <%= f.submit %>
+</p>
+<% end %>
+
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %>
