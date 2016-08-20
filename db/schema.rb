@@ -17,14 +17,14 @@ ActiveRecord::Schema.define(version: 20160820061339) do
   enable_extension "plpgsql"
 
   create_table "games", force: :cascade do |t|
-    t.integer  "number"
-    t.boolean  "completed"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "number",                     null: false
+    t.boolean  "completed",  default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "guesses", force: :cascade do |t|
-    t.integer  "number"
+    t.integer  "number",     null: false
     t.integer  "game_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
